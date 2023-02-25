@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/"
+      xmlns:sec="http//thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <meta charset="UTF-8">
+  <title>User</title>
+  <link rel = "stylesheet" type = "text/css" href = "/webjars/bootstrap/css/bootstrap.min.css"/>
+</head>
+<th:block th:insert = "fragments/head :: head(title = 'Login')"></th:block>
+<body>
+<th:block th:insert="fragments/navbar :: navbar"></th:block>
+
+<div class = "container text-left ml-3 ">
+  <h3 class = "user font-weight-bold">User Information:</h3>
+
+  <h3 class = "container mt - 3">
+
+          <th:block th:each="userField : ${user}">
+              <ul style="list-style-type: none">
+              <li  th:text="'first name: '+${user.first_name}"></li>
+              <li  th:text="'family name: '+${user.family_name}"></li>
+              <li th:text="'phone number: '+${user.phone}"></li>
+              <li th:text="'e_mail: '+${user.mail}"></li>
+              </ul>
+          </th:block>
+
+  </h3>
+    <h2>
+        <a href="/user/edit"><button type="button" class="btn btn-outline-primary">Edit User Info</button></a>
+    </h2>
+    <h2>
+        <a href="/user/contracts"><button type="button" class="btn btn-outline-secondary">My Contracts</button></a>
+    </h2>
+    <h2>
+            <a href="/user/adminPage"><button type="button" class="btn btn-outline-dark">Admin Page</button></a>
+    </h2>
+
+</div>
+</body>
+</html>

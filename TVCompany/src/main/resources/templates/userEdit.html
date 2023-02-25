@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit User</title>
+  <link rel = "stylesheet" type = "text/css" href = "/webjars/bootstrap/css/bootstrap.min.css"/>
+</head>
+<th:block th:insert = "fragments/head :: head(title = 'Login')">
+</th:block>
+<body>
+<th:block th:insert="fragments/navbar :: navbar"></th:block>
+<div class = "container text-center">
+  <div>
+    <h1> Edit User </h1>
+  </div>
+  <div class = "container text-center">
+    <th:block th:each="userField : ${user}">
+      <li th:text="${user.first_name}"></li>
+      <li  th:text="${user.family_name}"></li>
+      <li th:text="${user.phone}"></li>
+      <li th:text="${user.mail}"></li>
+    </th:block>
+  </div>
+  <form th:action="@{/user/edituser}" method="post" style="max-width: 400px; margin: 0 auto" th:object="${user}">
+    <div class = "m-3">
+      <div class="form-group row">
+        <label class="col-form-label col-4 text-md-left">Username</label>
+        <input type="text" class="form-control" th:field="*{username}" />
+      </div>
+      <div class="form-group row">
+        <label class="col-form-label col-4 text-md-left">Password</label>
+        <input type ="password" class="form-control" th:field="*{password}" />
+      </div>
+      <div class="form-group row">
+        <label class = "col-form-label col-4 text-md-left">First Name</label>
+        <input type = "text" class="form-control" th:field="*{first_name}" />
+      </div>
+      <div class="form-group row">
+        <label class = "col-form-label col-4 text-md-left">Last Name</label>
+        <input type = "text" class="form-control" th:field="*{family_name}" />
+      </div>
+      <div class="form-group row">
+        <label class = "col-form-label col-4 text-md-left">Phone</label>
+        <input type = "tel" class="form-control" th:field="*{phone}" pattern="[0-9]{10}" />
+      </div>
+      <div class="form-group row">
+        <label class = "col-form-label col-4 text-md-left">E-Mail</label>
+        <input type = "email" class="form-control" th:field="*{mail}" />
+      </div>
+      <div>
+        <button type = "submit" class="btn btn-outline-primary">Edit</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<p th:text="${error}"></p>
+<p th:text="${success}"></p>
+</body>
+</html>

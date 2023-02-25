@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/"
+      xmlns:sec="http//thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <meta charset="UTF-8">
+  <title>User</title>
+  <link rel = "stylesheet" type = "text/css" href = "/webjars/bootstrap/css/bootstrap.min.css"/>
+</head>
+<th:block th:insert = "fragments/head :: head(title = 'Login')"></th:block>
+<body>
+<th:block th:insert="fragments/navbar :: navbar"></th:block>
+
+<div class = "container text-left ml-3 ">
+  <h3 class = "user font-weight-bold">Channel</h3>
+
+  <h3 class = "container mt - 3">
+    <form th:action="@{/admin/editChannel}" method="post" style="max-width: 400px; margin: 0 auto" th:object="${channel}">
+      <th:block th:each="channel-field : ${unedited}">
+        <ul style="list-style-type: none">
+          <li  th:text="'Id: '+${unedited.id}"></li>
+          <li  th:text="''+${unedited.name}"></li>
+          <li th:text="''+${unedited.category}"></li>
+          <li th:text="''+${unedited.price}"></li>
+        </ul>
+
+      <div class = "m-3">
+        <div class="form-group row">
+          <input type="hidden"  value = "${unedited.id}" th:field="*{id}"/>
+        </div>
+        <div class="form-group row">
+          <label class="col-form-label col-4 text-md-left">Name</label>
+          <input type="text" class="form-control" th:field="*{name}" />
+        </div>
+        <div class="form-group row">
+          <label class="col-form-label col-4 text-md-left">Category</label>
+          <select class="form-control" id="categoryselect" th:field="*{category}">
+            <option value="news">news</option>
+            <option value="film">film</option>
+            <option value="documental">documental</option>
+            <option value="music">music</option>
+            <option value="sports">sports</option>
+          </select>
+        </div>
+        <div class="form-group row">
+          <label class="col-form-label col-4 text-md-left">Provider</label>
+          <select class="form-control" id="providerselect" th:field="*{provider}">
+            <th:block th:each="provider : ${providers}">
+              <option th:value="${provider.id}" th:text="${provider.name}"></option>
+            </th:block>
+          </select>
+        </div>
+        <div class="form-group row">
+          <label class = "col-form-label col-4 text-md-left">Price</label>
+          <input type = "number" min="0,00" step="0.01" placeholder="${unedited.price}"  class="form-control" th:field="*{price}"/>
+        </div>
+        <div>
+          <button type = "submit" class="btn btn-outline-primary">Edit</button>
+        </div>
+      </div>
+      </th:block>
+    </form>
+  </h3>
+</div>
+
+</body>
+</html>

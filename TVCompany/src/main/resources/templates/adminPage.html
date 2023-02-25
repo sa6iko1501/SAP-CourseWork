@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/"
+      xmlns:sec="http//thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel = "stylesheet" type = "text/css" href = "/webjars/bootstrap/css/bootstrap.min.css"/>
+</head>
+<th:block th:insert = "fragments/head :: head(title = 'Login')">
+</th:block>
+<body>
+<th:block th:insert="fragments/navbar :: navbar"></th:block>
+<div class = "container text-center">
+    <div>
+        <h2>Admin Options:</h2>
+    </div>
+    <div>
+        <h2>
+            <a href="/admin/showUsers"><button type="button" class="btn btn-info">Show Users</button></a>
+        </h2>
+    </div>
+
+    <div>
+        <h2>
+            <a href="/admin/createChannel"><button type="button" class="btn btn-outline-dark">Create Channel</button></a>
+        </h2>
+    </div>
+    <div>
+        <h2>
+            <a href="/admin/showChannels"><button type="button" class="btn btn-outline-dark">Show Existing Channels</button></a>
+        </h2>
+    </div>
+    <div>
+        <h2>
+            <a href="/admin/createProvider"><button type="button" class="btn btn-outline-primary">Create Provider</button></a>
+        </h2>
+    </div>
+    <div>
+        <h2>
+            <a href="/admin/providers"><button type="button" class="btn btn-outline-primary">Show Existing Providers</button></a>
+        </h2>
+    </div>
+</div>
+<h4><p th:text="${error}"></p></h4>
+
+<p th:text="${success}"></p>
+
+</body>
+</html>

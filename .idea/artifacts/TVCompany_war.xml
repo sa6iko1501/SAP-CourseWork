@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="TVCompany:war">
+    <output-path>$PROJECT_DIR$/TVCompany/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>TVCompany</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="TVCompany-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="TVCompany:war exploded" />
+    </root>
+  </artifact>
+</component>
