@@ -10,7 +10,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.annotation.Rollback;
 
-import javax.persistence.EntityManager;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,11 +32,11 @@ public class Initialization {
     @Test
     public void initialization(){
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        //Role user = new Role();
-        //Role admin = new Role();
-        //user.setName("USER");
-        //admin.setName("ADMIN");
-        //roleRepo.saveAll(List.of(user,admin));
+        Role user = new Role();
+        Role admin = new Role();
+        user.setName("USER");
+        admin.setName("ADMIN");
+        roleRepo.saveAll(List.of(user,admin));
         User user1 = new User("admin1","Petar","Petrov","0899088831","admin123","admin1@abv.bg");
         user1.setPassword(bCryptPasswordEncoder.encode(user1.getPassword()));
         user1.addRole(roleRepo.findByName("ADMIN"));
@@ -82,7 +81,7 @@ public class Initialization {
                 channel.setProvider(provider2);
                 provider2.addChannel(channel);
             }
-            if(11<i && i<=14){
+            if(11<i){
                 channel.setCategory(Category.sports);
                 channel.setProvider(provider3);
                 provider3.addChannel(channel);
