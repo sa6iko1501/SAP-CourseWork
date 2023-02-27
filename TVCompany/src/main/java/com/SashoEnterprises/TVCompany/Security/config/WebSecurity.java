@@ -34,29 +34,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         return new CustomUserDetailsService();
     }
     private final BCryptPasswordEncoder encoder;
-/*
-    @Bean
-    @Deprecated
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-        http
-                .csrf()
-                .disable()
-                .authorizeRequests()
-                .antMatchers("/**")
-                .permitAll()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/", true)
-                .failureUrl("/login?error=true")
-                .and()
-                .logout()
-                .logoutSuccessUrl("/");
-        System.out.println("Gets here");
-        return http.build();
-    }
- */
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
