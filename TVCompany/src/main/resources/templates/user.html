@@ -31,9 +31,12 @@
     <h2>
         <a href="/user/contracts"><button type="button" class="btn btn-outline-secondary">My Contracts</button></a>
     </h2>
-    <h2>
+    <div sec:authorize=hasAuthority('ADMIN')>
+        <h2>
             <a href="/user/adminPage"><button type="button" class="btn btn-outline-dark">Admin Page</button></a>
-    </h2>
+        </h2>
+    </div>
+
 
 </div>
 </body>

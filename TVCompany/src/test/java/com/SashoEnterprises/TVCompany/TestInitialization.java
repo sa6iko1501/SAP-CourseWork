@@ -17,7 +17,7 @@ import java.util.List;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(value = false)
-public class Initialization {
+public class TestInitialization {
     @Autowired
     ChannelRepository channelRepository;
     @Autowired
@@ -32,11 +32,11 @@ public class Initialization {
     @Test
     public void initialization(){
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        Role user = new Role();
-        Role admin = new Role();
-        user.setName("USER");
-        admin.setName("ADMIN");
-        roleRepo.saveAll(List.of(user,admin));
+         Role user = new Role();
+         Role admin = new Role();
+         user.setName("USER");
+         admin.setName("ADMIN");
+         roleRepo.saveAll(List.of(user,admin));
         User user1 = new User("admin1","Petar","Petrov","0899088831","admin123","admin1@abv.bg");
         user1.setPassword(bCryptPasswordEncoder.encode(user1.getPassword()));
         user1.addRole(roleRepo.findByName("ADMIN"));
